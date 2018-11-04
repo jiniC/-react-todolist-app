@@ -34,13 +34,12 @@ class TodoListItem extends Component {
 	};
 
 	handleRemove = () => {
-		const {todo, onRemove} = this.props
+		const { todo, onDelete} = this.props
 		if(window.confirm('정말 삭제 하실건가요?')) {
-			onRemove(todo.id)
+			onDelete(todo.id);
 		} else {
 
 		}
-
 	};
 
 	render() {

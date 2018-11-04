@@ -8,7 +8,7 @@ class TodoListArea extends Component {
 
 	render() {
         // TodoList가 내려준 props를 TodoListItem한테 내려줌
-        const { todos, onUpdate, onRemove } = this.props;
+        const { todos, onUpdate, onDelete } = this.props;
         return (
             <div className="todolist_area">
                 <ul className="list_todos">
@@ -18,7 +18,7 @@ class TodoListArea extends Component {
                                 key={todo.id}
                                 todo={todo}
                                 onUpdate={onUpdate}
-                                onRemove={onRemove}
+                                onDelete={onDelete}
                             />
                         );
                     })}
