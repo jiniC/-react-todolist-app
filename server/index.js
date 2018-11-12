@@ -39,7 +39,14 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 
     // Create
     router.post('/', (req, res) => {
-
+        const insert = {
+            test: req.body.text
+        }
+        collection.insertOne(insert,(err, result) => {
+            assert.equal(null, err)
+            console.log('Create result: ', result.ops[0])
+            res.json(result.ops[0])
+        })
     })
 
     // Update

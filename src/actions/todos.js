@@ -13,13 +13,18 @@ export const fetchTodosAction = () => {
 }
 
 export const createTodoAction = data => {
-	const action = {
-		type: CREATE_TODO,
-		data,
-	}
-
 	return dispatch => {
-		dispatch(action)
+		const options = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(data)
+		}
+		return fetch('/api', options)
+			.then(res => res.json())
+			.then(data => {
+				console.log(data)
+				dispatch({ type: CREATE_TODO, data })
+			});
 	}
 }
 
