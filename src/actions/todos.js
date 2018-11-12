@@ -1,4 +1,4 @@
-export const FETCH_TODOS = 'FETCH_TODOS';
+export const FETCH_TODO = 'FETCH_TODO';
 export const CREATE_TODO = 'CREATE_TODO'
 export const UPDATE_TODO = 'UPDATE_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
@@ -8,7 +8,7 @@ export const fetchTodosAction = () => {
 		// server에 요청
 		return fetch('/api')
 			.then(res => res.json())
-			.then(data => dispatch({ type: FETCH_TODOS, data })) // 결과물인 data -> reducers로 보냄
+			.then(data => dispatch({ type: FETCH_TODO, data })) // 결과물인 data -> reducers로 보냄
 	}
 }
 

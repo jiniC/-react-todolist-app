@@ -29,20 +29,20 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     // Read (get으로 요청)
     router.get('/', (req, res) => {
         // 모든게 다 불러짐  
-        collection.find({
-        }).toArray((err, result) => {
+        collection.find({}).toArray((err, result) => {
             assert.equal(null, err)
-            console.log(result) // -> 화면에 뿌려줘야함
+            console.log('Read result: ', result)
             res.json(result)
         })
     })
 
     // Create
     router.post('/', (req, res) => {
+        const { text } = req.body
         const insert = {
-            test: req.body.text
+            text
         }
-        collection.insertOne(insert,(err, result) => {
+        collection.insertOne(insert, (err, result) => {
             assert.equal(null, err)
             console.log('Create result: ', result.ops[0])
             res.json(result.ops[0])
@@ -51,20 +51,22 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 
     // Update
     router.put('/', (req, res) => {
+        const { _id, text } = req.body
         const find = {
-            _id: new mongodb.ObjectId(req.body_id)
+            _id: new mongodb.ObjectId(_id)
         }
         const update = {
-            $set : {
-                test: req.body.text
+            $set: {
+                text
             }
         }
         const updateOptions = {
             returnOriginal: false
         }
-        collection.findOneAndUpdate(find, update, updateOptions, (err,result) => {
+
+        collection.findOneAndUpdate(find, update, updateOptions, (err, result) => {
             assert.equal(null, err)
-            console.log(result.value)
+            console.log('Update result: ', result.value)
             res.json(result.value)
         })
     })
