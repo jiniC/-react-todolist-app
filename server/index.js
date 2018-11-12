@@ -56,7 +56,15 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 
     // Delete
     router.delete('/', (req, res) => {
+        const find = {
+            _id: new mongodb.ObjectId(req.body_id)
+        }
 
+        collection.findOneAndDelete(find, (err, result) => {
+            assert.equal(null, err)
+            console.log('Delete result: ', result.value)
+            res.json(result.value)
+        })
     })
 })
 

@@ -8,8 +8,8 @@ const todos = (state=[], action) => {
 			return state.concat({ ...action.data });
 		// case UPDATE_TODO:
 		// 	return state.map(todo => (todo.id === action.id ? { id: action.id, ...action.data } : todo));
-		// case DELETE_TODO:
-		// 	return state.filter(todo => todo.id !== action.id);
+		case DELETE_TODO:
+			return state.filter(todo => todo._id !== action.data._id); // action.data : 서버까지 갔다온 항목
 		default:
 			return state;
 	}

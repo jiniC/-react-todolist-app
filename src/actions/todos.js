@@ -40,13 +40,14 @@ export const updateTodoAction = (id, data) => {
 	}
 }
 
-export const deleteTodoAction = id => {
-	const action = {
-		type: DELETE_TODO,
-		id,
-	}
-
+export const deleteTodoAction = data => {
 	return dispatch => {
-		dispatch(action);
+		const options = {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(data)
+		}
+		return fetch('/api', options)
+			.then(() => dispatch({ type:DELETE_TODO, data }))
 	}
 }

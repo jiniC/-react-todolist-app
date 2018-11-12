@@ -36,7 +36,7 @@ class TodoListItem extends Component {
 	handleRemove = () => {
 		const { todo, onDelete} = this.props
 		if(window.confirm('정말 삭제 하실건가요?')) {
-			onDelete(todo.id);
+			onDelete({_id: todo._id});
 		} else {
 
 		}
