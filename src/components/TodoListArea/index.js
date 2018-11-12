@@ -15,7 +15,7 @@ class TodoListArea extends Component {
                     {todos.map(todo => {
                         return (
                             <TodoListItem
-                                key={todo.id}
+                                key={todo._id}
                                 todo={todo}
                                 onUpdate={onUpdate}
                                 onDelete={onDelete}
