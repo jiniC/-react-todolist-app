@@ -51,7 +51,22 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 
     // Update
     router.put('/', (req, res) => {
-
+        const find = {
+            _id: new mongodb.ObjectId(req.body_id)
+        }
+        const update = {
+            $set : {
+                test: req.body.text
+            }
+        }
+        const updateOptions = {
+            returnOriginal: false
+        }
+        collection.findOneAndUpdate(find, update, updateOptions, (err,result) => {
+            assert.equal(null, err)
+            console.log(result.value)
+            res.json(result.value)
+        })
     })
 
     // Delete
@@ -66,10 +81,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
             res.json(result.value)
         })
     })
-})
-
-app.get('/', (req, res) => {
-    res.end('get')
 })
 
 app.listen(PORT, () => {

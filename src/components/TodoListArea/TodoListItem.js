@@ -12,7 +12,7 @@ class TodoListItem extends Component {
 		if (this.state.isEditMode) {
 			if (text.trim() !== '') {
 				// 앞text: 데이터이름, 뒤text: state
-				onUpdate(todo.id, { text: text });
+				onUpdate({_id:todo._id, text:text});
 			} else {
 				alert('할 일을 입력해주세요.');
 			}

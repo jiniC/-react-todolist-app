@@ -22,21 +22,22 @@ export const createTodoAction = data => {
 		return fetch('/api', options)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data)
+				//console.log(data)
 				dispatch({ type: CREATE_TODO, data })
 			});
 	}
 }
 
-export const updateTodoAction = (id, data) => {
-	const action = {
-		type: UPDATE_TODO,
-		id,
-		data,
-	}
-
+export const updateTodoAction = data => {
 	return dispatch => {
-		dispatch(action)
+		const options = {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(data)
+		}
+		return fetch('/api', options)
+			.then(res => res.json())
+			.then(data => dispatch({ type: UPDATE_TODO, data}))
 	}
 }
 
