@@ -11,6 +11,7 @@ class WriteArea extends Component {
         this.setState({ todoText: e.target.value }) // 여기서 this는 input인데 WrtieArea컴포넌트 자체여야함 -> 바인드필요 (방법1, 2)
     }
     */
+
 	// 방법1
 	// constructor(){
 	//     super()
@@ -21,7 +22,6 @@ class WriteArea extends Component {
 	handleChange = e => {
         const todoText = e.target.value
         this.setState({ todoText })
-        //this.setState({ todoText: e.target.value })
 	};
 
 	handleClick = () => {

@@ -26,10 +26,10 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     const db = client.db(dbName)
     const collection = db.collection('todolist')
 
-    // Read (get으로 요청)
-    router.get('/', (req, res) => {
-        // 모든게 다 불러짐  
-        collection.find({}).toArray((err, result) => {
+    // Read
+    router.get('/', (req, res) => { // 2
+        // find({}): 전체 다 불러옴
+        collection.find({}).toArray((err, result) => { // 3
             assert.equal(null, err)
             console.log('Read result: ', result)
             res.json(result)
@@ -37,12 +37,12 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     })
 
     // Create
-    router.post('/', (req, res) => {
+    router.post('/', (req, res) => { // 2
         const { text } = req.body
         const insert = {
             text
         }
-        collection.insertOne(insert, (err, result) => {
+        collection.insertOne(insert, (err, result) => { // 3
             assert.equal(null, err)
             console.log('Create result: ', result.ops[0])
             res.json(result.ops[0])
@@ -50,7 +50,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     })
 
     // Update
-    router.put('/', (req, res) => {
+    router.put('/', (req, res) => { // 2
         const { _id, text } = req.body
         const find = {
             _id: new mongodb.ObjectId(_id)
@@ -64,7 +64,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
             returnOriginal: false
         }
 
-        collection.findOneAndUpdate(find, update, updateOptions, (err, result) => {
+        collection.findOneAndUpdate(find, update, updateOptions, (err, result) => { // 3
             assert.equal(null, err)
             console.log('Update result: ', result.value)
             res.json(result.value)
@@ -72,12 +72,12 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     })
 
     // Delete
-    router.delete('/', (req, res) => {
+    router.delete('/', (req, res) => { // 2
         const find = {
             _id: new mongodb.ObjectId(req.body_id)
         }
 
-        collection.findOneAndDelete(find, (err, result) => {
+        collection.findOneAndDelete(find, (err, result) => { // 3
             assert.equal(null, err)
             console.log('Delete result: ', result.value)
             res.json(result.value)

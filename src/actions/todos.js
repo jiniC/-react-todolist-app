@@ -5,10 +5,9 @@ export const DELETE_TODO = 'DELETE_TODO'
 
 export const fetchTodosAction = () => {
 	return dispatch => {
-		// server에 요청
-		return fetch('/api')
-			.then(res => res.json())
-			.then(data => dispatch({ type: FETCH_TODO, data })) // 결과물인 data -> reducers로 보냄
+		return fetch('/api') // 1 (server에 요청)
+			.then(res => res.json()) // 4
+			.then(data => dispatch({ type: FETCH_TODO, data })) // 5 (결과물인 data -> reducers로 보냄)
 	}
 }
 
@@ -19,12 +18,9 @@ export const createTodoAction = data => {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(data)
 		}
-		return fetch('/api', options)
-			.then(res => res.json())
-			.then(data => {
-				//console.log(data)
-				dispatch({ type: CREATE_TODO, data })
-			});
+		return fetch('/api', options) // 1
+			.then(res => res.json()) // 4
+			.then(data => { dispatch({ type: CREATE_TODO, data }) }) // 5
 	}
 }
 
@@ -35,9 +31,9 @@ export const updateTodoAction = data => {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(data)
 		}
-		return fetch('/api', options)
-			.then(res => res.json())
-			.then(data => dispatch({ type: UPDATE_TODO, data}))
+		return fetch('/api', options) // 1
+			.then(res => res.json()) // 4
+			.then(data => dispatch({ type: UPDATE_TODO, data})) // 5
 	}
 }
 
@@ -48,7 +44,7 @@ export const deleteTodoAction = data => {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(data)
 		}
-		return fetch('/api', options)
-			.then(() => dispatch({ type:DELETE_TODO, data }))
+		return fetch('/api', options) // 1
+			.then(() => dispatch({ type:DELETE_TODO, data })) // 4
 	}
 }

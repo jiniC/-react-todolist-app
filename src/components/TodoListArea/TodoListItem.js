@@ -45,14 +45,13 @@ class TodoListItem extends Component {
 	render() {
 		const { isEditMode, text } = this.state;
 		const { todo } = this.props;
-		// console.log('TODO: ', todo)
 
 		return (
 			<li key={todo._id} className="list_item">
 				{isEditMode ? (
 					<input type="text" value={text} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
 				) : (
-					<div calssName="txt">{todo.text}</div>
+					<div className="txt">{todo.text}</div>
 				)}
 				<div className="btn_area">
 					<button type="button" onClick={this.handleEditToggle}>

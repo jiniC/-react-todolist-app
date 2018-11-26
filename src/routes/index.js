@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import App from './App'
 import NotFound from './NotFound';
 
-// class면 render 안에서 return 
+// (class면 render 안에서 return해야 됨)
 const Routes = () => {
     return (
         <Router>
