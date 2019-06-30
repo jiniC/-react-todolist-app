@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/api', router)
 
 // Connection URL
-const url = 'mongodb://eedaihee:rhrh0903@ds117869.mlab.com:17869/fwr-todolist'
+const url = 'mongodb+srv://jinic:jinic@cluster0-kscy7.mongodb.net/test?retryWrites=true&w=majority'
 
 // Database Name
 const dbName = 'fwr-todolist'
