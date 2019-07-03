@@ -1,8 +1,10 @@
+// 액션 타입 정의
 export const FETCH_TODO = 'FETCH_TODO';
 export const CREATE_TODO = 'CREATE_TODO'
 export const UPDATE_TODO = 'UPDATE_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
 
+// 액션 생성 함수(액션 객체를 만드는 함수) 정의
 export const fetchTodosAction = () => {
 	return dispatch => {
 		return fetch('/api') // 1 (server에 요청)
