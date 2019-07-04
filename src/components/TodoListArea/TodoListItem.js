@@ -1,5 +1,6 @@
 import React, { Component} from 'react'
 
+// TodoListItem: 프레젠테이션 컴포넌트
 class TodoListItem extends Component {
 	state = {
 		isEditMode: false,

@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 
+// WriteArea: 프레젠테이션 컴포넌트
 class WriteArea extends Component {
 	state = {
 		todoText: '',

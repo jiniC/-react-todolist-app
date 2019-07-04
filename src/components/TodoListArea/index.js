@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import TodoListItem from './TodoListItem';
 
+// TodoListArea: 프레젠테이션 컴포넌트
 class TodoListArea extends Component {
 
 	render() {
