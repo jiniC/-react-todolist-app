@@ -9,7 +9,7 @@
     "concurrently": "^4.0.1",
     "express": "^4.16.4",
     "http-proxy-middleware": "^0.19.0",
-    "mongodb": "^3.1.8",
+    "mongodb": "^3.1.13",
     "nodemon": "^1.18.5",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
